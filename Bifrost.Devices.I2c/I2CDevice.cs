@@ -143,11 +143,12 @@ namespace Bifrost.Devices.I2c
 
         private int GetI2cBusHandle()
         {
-            var i2cBushandle = Open(this.BusId, OPEN_READ_WRITE);
+            
+            var i2cBushandle = Open($"/dev/{this.BusId}", OPEN_READ_WRITE);
 
             if (i2cBushandle < 0)
             {
-                throw new Exception("No I2C bus was found. Please check that there is an I2C bus for this device - perhaps use 'i2cdetect -l' from a terminal, or the Bifröst Cartographer.");
+                throw new Exception($"No I2C bus was found. Please check that there is an I2C bus for this device - perhaps use 'i2cdetect -l' from a terminal, or the Bifröst Cartographer. Native Open method returned: {i2cBushandle}.");
             }
 
             return i2cBushandle;
