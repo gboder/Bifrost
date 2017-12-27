@@ -9,7 +9,7 @@ namespace Bifrost.Devices.I2c
 
         public abstract byte I2cAddress { get; }
         
-        public void Initialize()
+        public virtual void Initialize()
         {
             var busId = I2cDevice.I2cBus;
 
@@ -18,7 +18,7 @@ namespace Bifrost.Devices.I2c
             this.Slave = new I2cDevice(busId, i2cSettings);
         }
 
-        public bool IsConnected()
+        public virtual bool IsConnected()
         {
             throw new NotImplementedException();
         }
